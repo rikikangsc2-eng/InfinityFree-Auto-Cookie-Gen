@@ -193,10 +193,10 @@ module.exports = async function(rq, rs) {
 
         if (r2.status === 200) {
             rs.successJson({ 
-                cookieGenerated: ck, 
-                verificationStatus: r2.status, 
-                verificationUrl: u2,
-                pageTitleAttempt: (r2.data && typeof r2.data === 'string' ? (r2.data.match(/<title[^>]*>([^<]+)<\/title>/i) || [])[1] || "Judul gak ketemu" : "Respon bukan teks") 
+                kukinya: ck, 
+                kukiIsvalid: r2.status, 
+                target: u2,
+                judulWeb: (r2.data && typeof r2.data === 'string' ? (r2.data.match(/<title[^>]*>([^<]+)<\/title>/i) || [])[1] || "Judul gak ketemu" : "Respon bukan teks") 
             });
         } else {
             rs.errorJson(`Cookie udah jadi, tapi pas verifikasi gagal euy. Status dari server: ${r2.status} buat URL ${u2}. Responnya: ${r2.data ? String(r2.data).substring(0,200) : 'Gak ada data'}`, 502);
