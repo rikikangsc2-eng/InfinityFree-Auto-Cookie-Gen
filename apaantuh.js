@@ -192,7 +192,7 @@ module.exports = async function(rq, rs) {
         });
 
         if (r2.status === 200) {
-            rs.send(r2.data);
+            rs.json(r2.data);
         } else {
             rs.errorJson(`Cookie udah jadi, tapi pas verifikasi gagal euy. Status dari server: ${r2.status} buat URL ${u2}. Responnya: ${r2.data ? String(r2.data).substring(0,200) : 'Gak ada data'}`, 502);
         }
